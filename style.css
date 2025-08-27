@@ -29,12 +29,42 @@ body {
 .button {
   padding: 10px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .btn {
-  width: 50px;
-  height: 50px;
-  font-size: 2em;
+  width: 70px;
+  height: 70px;
+  font-size: 4em;
+}
+
+.first-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.second-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.third-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.fourth-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.fifth-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }

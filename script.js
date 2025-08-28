@@ -35,3 +35,13 @@ function operate(num1, operation, num2) {
     return divide(num1, num2);
   }
 }
+
+const buttons = document.querySelectorAll(".btn");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const buttonId = button.id;
+    // Handle button click
+  });
+});
+const display = document.querySelector(".display");

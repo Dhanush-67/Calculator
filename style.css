@@ -3,12 +3,13 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: beige;
 }
 
 .container {
   background-color: #2d531b;
   width: 500px;
-  height: 600px;
+  height: 610px;
   text-align: center;
   border-radius: 10px;
   display: flex;
@@ -22,6 +23,7 @@ body {
   padding: 20px;
   margin: 20px;
   height: 100px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
 }
@@ -31,12 +33,20 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex: auto;
 }
 
 .btn {
-  width: 70px;
+  width: 100px;
   height: 70px;
   font-size: 4em;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.first-row .btn {
+  width: 210px;
+  height: 70px;
 }
 
 .first-row {
@@ -67,4 +77,8 @@ body {
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+
+#empty {
+  visibility: hidden;
 }

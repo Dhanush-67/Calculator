@@ -20,6 +20,7 @@ function divide(num1, num2) {
 let num1;
 let num2;
 let operation;
+let flag = 0;
 
 function operate(num1, operation, num2) {
   if (operation === "+") {
@@ -64,11 +65,31 @@ buttons.forEach((button) => {
         button.id === "add") &&
         operation) ||
       ((!num1 || typeof num2 !== "number" || !operation) &&
-        button.id === "equals")
+        button.id === "equals") ||
+      (flag === 1 &&
+        !operation &&
+        button.id !== "divide" &&
+        button.id !== "multiply" &&
+        button.id !== "add" &&
+        button.id !== "subtract" &&
+        button.id !== "clear")
     ) {
       return;
     }
+
     if (button.id === "decimal") {
+      if (!operation) {
+        let count = (display.textContent + ".").split(".").length - 1;
+        if (count > 1) {
+          return;
+        }
+      } else {
+        let parts = display.textContent.split(/[+X÷-]/);
+        let count = (parts[1] + ".").split(".").length - 1;
+        if (count > 1) {
+          return;
+        }
+      }
       display.textContent = display.textContent + ".";
       return;
     }
@@ -77,19 +98,40 @@ buttons.forEach((button) => {
       num1 = "";
       num2 = "";
       operation = "";
+      flag = 0;
       return;
     }
 
     if (button.id === "backspace") {
+      if (flag === 1) {
+        return;
+      }
+      if (
+        display.textContent[display.textContent.length - 1] === "X" ||
+        display.textContent[display.textContent.length - 1] === "+" ||
+        display.textContent[display.textContent.length - 1] === "÷" ||
+        display.textContent[display.textContent.length - 1] === "-"
+      ) {
+        return;
+      }
+
       let str = display.textContent.slice(0, -1);
+      if (!operation) {
+        num1 = parseFloat(str);
+      } else {
+        let parts = str.split(/[+X÷-]/);
+        num2 = parseFloat(parts[1]);
+      }
+
       display.textContent = str;
       return;
     }
     if (button.id === "equals") {
-      console.log(num1, operation, num2);
-      console.log("num1:", num1, "operation:", operation, "num2:", num2);
-      console.log("result:", operate(num1, operation, num2));
       display.textContent = operate(num1, operation, num2);
+      num1 = parseFloat(operate(num1, operation, num2));
+      num2 = "";
+      operation = "";
+      flag = 1;
       return;
     }
     if (button.id === "divide") {

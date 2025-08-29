@@ -26,6 +26,9 @@ body {
   border-radius: 10px;
   display: flex;
   align-items: center;
+  overflow-y: hidden;
+  overflow-x: auto;
+  /* white-space: nowrap; */
 }
 
 .button {
